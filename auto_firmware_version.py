@@ -5,7 +5,7 @@ Import("env")
 required_pkgs = {'dulwich'}
 installed_pkgs = {dist.metadata['Name'] for dist in importlib.metadata.distributions()}
 missing_pkgs = required_pkgs - installed_pkgs
-
+env.Execute('pip install dulwich')
 if missing_pkgs:
     env.Execute('$PYTHONEXE -m pip install dulwich --global-option="--pure"')
 
